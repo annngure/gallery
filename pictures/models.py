@@ -36,18 +36,29 @@ class Category(models.Model):
         self.delete()
 
     @classmethod
-    def search_
-
+    def search_by_title(cls,search_term):
+        pictures = cls.object.filter(title_icontains=search_term)   
+        return pictures
 class Image(models.Model):
     picture = models.ImageField(upload_to ='images/')
     title = models.CharField(max_length = 30)
-    photographer = models.ForeignKey(Photographer)
-    description= models.StringField(max_length = 30)
-    location= model.ForeignKey(Location)
-    category = models.ForeignKey(Category)
+    photographer = models.ForeignKey(Photographer, on_delete=models.CASCADE)
+    description= models.TextField(max_length = 30)
+    location= models.ForeignKey(Location,on_delete=models.CASCADE)
+    category = models.ForeignKey(Category ,on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add = True ,null = True)
     
 
+    def save_Image(self):
+        self.save()
+
+    def delete_Image(self):
+        self.delete()
+
+    @classmethod
+    def get_image_by_title(cls,title):
+        image = Image.objects.all()
+        return image
 
 
 

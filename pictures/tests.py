@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Photographer, Location, Category
+from .models import Photographer, Location, Category ,Image
 
 
 # Create your tests here.
@@ -67,3 +67,28 @@ class CategoryTestClass(TestCase):
         self.ann.delete_Category()
         category = Category.objects.all()
         self.assertTrue(len(category)==0)
+
+  
+# class ImageTestClass(TestCase):
+
+#     #setUp
+#     def setUp(self):
+
+#         self.ann=Image(title= 'image',description='image')
+#         self.ann.save_Image()
+#     #Testing instance
+#     def test_instance(self):
+#         self.assertTrue(isinstance(self.ann,Image))
+
+#     #Testing save method
+#     def test_save_method(self):
+#         self.ann.save_Image()
+#         image = Image.objects.all()
+#         self.assertTrue(len(image) > 0)
+
+#     #delete method
+#     def test_delete_method(self):
+#         self.ann.save_Image()
+#         self.ann.delete_Image()
+#         image= Image.objects.all()
+#         self.assertTrue(len(image)==0)      
