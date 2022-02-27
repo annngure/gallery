@@ -25,6 +25,10 @@ class Location(models.Model):
     def delete_Location(self):
         self.delete()
 
+    @classmethod
+    def filter_by_location(cls,id):
+        images=Image.objects.filter(location_id=id)
+        return images
 
 class Category(models.Model):
     name= models.CharField(max_length = 30)
@@ -57,7 +61,7 @@ class Image(models.Model):
 
     @classmethod
     def get_image_by_title(cls,title):
-        image = Image.objects.all()
+        image = Image.objects.get(title=title)
         return image
 
 
