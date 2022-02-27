@@ -15,9 +15,20 @@
         <div class="container-fliud">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{% url 'index' %}">Gallery</a>
-
              </div>
-          
+          <!-- add a serch form  -->
+          <div class="col-sm-4 col-md-4 navbar-right">
+              <form action="{% url 'search_results' %}" class="navbar-form" role="search">
+                  <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search Image" name="Image">
+                      <div class="input-group=btn">
+                          <button class="btn btn-default" type="submit">SUBMIT.</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+        <!-- end of search form  -->
+
         </div>
     </nav>
      
