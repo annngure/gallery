@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime as dt
 # Create your models here.
 
 class Photographer(models.Model):
@@ -34,6 +34,19 @@ class Category(models.Model):
 
     def delete_Category(self):
         self.delete()
+
+    @classmethod
+    def search_
+
+class Image(models.Model):
+    picture = models.ImageField(upload_to ='images/')
+    title = models.CharField(max_length = 30)
+    photographer = models.ForeignKey(Photographer)
+    description= models.StringField(max_length = 30)
+    location= model.ForeignKey(Location)
+    category = models.ForeignKey(Category)
+    pub_date = models.DateTimeField(auto_now_add = True ,null = True)
+    
 
 
 
