@@ -56,11 +56,7 @@ class Category(models.Model):
     def delete_Category(self):
         self.delete()
 
-    @classmethod
-    def search_by_title(cls,search_term):
-        category = cls.object.filter(name__icontains=search_term)   
-        return pictures
-
+   
     @classmethod
     def all_category(cls):
         category=Category.objects.all()
@@ -93,6 +89,10 @@ class Image(models.Model):
     @classmethod
     def update_image(cls, id ,image, description , name,category,location):
         cls.objects.filter(id = id).update(image=image,description=description,name=name,category=category,location=location)
+    
+    @classmethod
+    def search_image(cls,search_category):
+        image = cls.object.filter(category__name__icontains=search_category)   
+        return image
 
-   
 

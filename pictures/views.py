@@ -12,15 +12,13 @@ def index(request):
     return render(request,'index.html',{"title":title , "location":location,"image":image,"category":category})
 
 def search_results(request):
-    image=Image.objects.all()
-    location = Location.all_locations()
+    location = Location.objects.all()
     if 'category'in request.GET and request.GET['category']:
-        search_term=request.GET.get("category")
-        # searched_category = Category.objects.filter(name__name__icontains = search_term)
-        searched_category = Category.search_by_title(search_term)
-        message=f"{search_term}"
-
-        return render(request, 'search.html',{"message":message,"category":searched_category,"location":location,"image":image})
+        search_category=request.GET.get("category")
+        searched_category = Image.search_image(search_category)
+        message=f"{search_category}"
+        
+        return render(request, 'search.html',{"message":message,"image":searched_category,"location":location})
 
     else:
         message = "You haven't searched for any term"

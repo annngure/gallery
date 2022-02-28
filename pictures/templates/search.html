@@ -1,23 +1,32 @@
 {% extends 'base.html'%}
 
 {% block content%}
+{{block.super}}
 
 <div class="container">
     <div class="row">
-        {% if category%}
-        <h2>Found {{category|length}} of searched term {{message}}</h2>
+        {% if image %}
+        <h2>Found {{image|length}} of searched term {{message}}</h2>
         {%else%}
-        <h2>Found 0 categories for the searched term {{category}}</h2>
+        <h2>Found 0 categories for the searched term {{image.category}}</h2>
         {% endif %}
-    </div>
-    <div class="row">
-        {% if categories%}
-            {% for category in categories%}
-                <div class="col-sm-6 col-md-3">
-                    <h1>{{category.title}}</h1>
-                </div>
-            {%endfor%}
-        {% endif%}
+        <form action="{%url 'search_image'%}" class="form" role="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search by category">
+            </div>
+        </form>
     </div>
 </div>
+<div class="row">   
+{% for image in image%}
+<div class="col-sm-6 col-md-3">
+    <div class="portfolio-wrap">
+        <img src="{{image.image.url}}" alt="" class="card-im image">
+            <h1>{{image.name}}</h1>   
+        </div>
+                   
+    </div>
+{%empty%}
+</div>
+{%endfor%}
 {% endblock%}
