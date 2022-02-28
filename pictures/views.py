@@ -4,10 +4,12 @@ from .models import Photographer, Location, Category,Image
 # Create your views here.
 
 def index(request):
+    category=Category.objects.all()
+    # photographer=Photographer.object.all()
     image=Image.objects.all()
     location = Location.all_locations()
     title = 'Ultimate'
-    return render(request,'index.html',{"title":title , "location":location,"image":image})
+    return render(request,'index.html',{"title":title , "location":location,"image":image,"category":category})
 
 def search_results(request):
     if 'category'in request.GET and request.GET['category']:
@@ -24,7 +26,7 @@ def search_results(request):
 
 def filter_by_location (request,location_id):
     title='Location'
-    location =Location.all_location()
+    location =Location.object.all()
     image= Image.filter_by_location(id=location_id)
 
     return render(request, 'location.html',{"image":image,"location":location})

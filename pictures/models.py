@@ -9,14 +9,22 @@ class Photographer(models.Model):
     last_name = models.CharField(max_length= 30)
     email = models.EmailField(blank = True)
 
+
     def __str__(self):
         return self.first_name
     
     def save_Photographer(self):
         self.save()
+    
+    
+    @classmethod
+    def all_photographer(cls):
+        photographer=Photographer.objects.all()
+        return photographer
 
 class Meta:
         odering = ['first_name']
+
 
 class Location(models.Model):
     name = models.CharField(max_length =30)
@@ -53,6 +61,11 @@ class Category(models.Model):
         category = cls.object.filter(name__icontains=search_term)   
         return pictures
 
+    @classmethod
+    def all_category(cls):
+        category=Category.objects.all()
+        return category
+
     def __str__(self):
         return self.name
 
@@ -76,6 +89,10 @@ class Image(models.Model):
     def get_image_by_title(cls,title):
         image = Image.objects.get(title=title)
         return image
+
+    @classmethod
+    def update_image(cls, id ,image, description , name,category,location):
+        cls.objects.filter(id = id).update(image=image,description=description,name=name,category=category,location=location)
 
    
 

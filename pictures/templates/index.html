@@ -4,21 +4,24 @@
 {{block.super}}
 
 <div class="container">
-    <h1>A man paints with his brains and not with his hands.</h1>
+    <h1 class="text-center">{{title}}</h1>
 </div>
 
 <div class="container">
+    {%for image in image%}
+    
     <div class="row">
-        <img src="{{image.image.url}}" alt="image" class="card-img photo">
-        <p>{{image.title}}</p>
-    </div>
-    <div class="row">
-        <h4 class="modal-title">{{image.title}}|{{photo.location}}</h4>
-    </div>
     <div class="modal-body">
+        <p>Name:{{image.title}}</p>
+        <p >Location:{{image.location}}</p>
+        <p >Category:{{image.category}}</p>
         <img src="{{image.image.url}}" alt="{{image.title}}" class="img-fluid">
-        <p class="text-center">{{image.description}}</p>
+
+        <p>Description:{{image.description}}</p>
+        <p>Posted by {{image.photographer}} on {{image.pub_date}}</p>
     </div>
+</div>
+    {%endfor%}
 </div>
 
 {% endblock%}
