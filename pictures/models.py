@@ -69,7 +69,7 @@ class Image(models.Model):
     image = CloudinaryField('image')
     title = models.CharField(max_length = 30)
     photographer = models.ForeignKey(Photographer, on_delete=models.CASCADE)
-    description= models.TextField(max_length = 30)
+    description= models.TextField(max_length = 300)
     location= models.ForeignKey(Location,on_delete=models.CASCADE)
     category = models.ForeignKey(Category ,on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add = True )

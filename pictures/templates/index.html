@@ -3,14 +3,17 @@
 {% block content%}
 {{block.super}}
 
+<div class="container">
+    <h1 class="text-center">{{title}}</h1>
+</div>
+
 <div class="banner">
     <div class="cover">
         <div class="container image">
-            <h2 id="category">The world is an art gallery when you're mindful.</h2>
-            <h2 class="category">There are beautiful things everywhere.</h2>
+            <p id="category">The world is an art gallery when you're mindful.There are beautiful things everywhere.</p>
             <form class="form" role="search" action="{% url 'search_results' %}">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search by category" name="image">
+                <div class="input-group" style="width:fit-content">
+                  <input type="text" class="form-control" placeholder="Search by category" name="image" style="border-radius: 10px;border-color: aqua;">
                   <br>
                 </div>
 
@@ -20,23 +23,19 @@
 </div>
 
 <div class="container">
-    <h1 class="text-center">{{title}}</h1>
-</div>
-
-<div class="container">
     {%for image in image%}
     
     <div class="row">
-    <div class="modal-body">
+        <div class="col-sm-6 col-lg-6 col-mb-6">
         <p>Name:{{image.title}}</p>
         <p >Location:{{image.location}}</p>
         <p >Category:{{image.category}}</p>
-        <img src="{{image.image.url}}" alt="{{image.title}}" class="img-fluid">
+        <img src="{{image.image.url}}" alt="{{image.title}}" class="img-fluid" >
 
         <p>Description:{{image.description}}</p>
         <p>Posted by {{image.photographer}} on {{image.pub_date}}</p>
+        </div>
     </div>
-</div>
     {%endfor%}
 </div>
 
