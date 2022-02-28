@@ -9,20 +9,16 @@
 
 <div class="container">
     <div class="row">
-        <img src="{{Image.image.url}}" alt="{{image.title}}" class="image-responsive">
-        <p>{{Image.description}}</p>
-        <!-- <p>Posted {{image.pub_date|timesince}} by {{photographer.first_name}}</p> -->
-    </div>
-    <!-- <div class="row">
-        <h1 class="text-center">{{Image.title}}</h1>
-
-    </div> -->
-    <!-- <div class="row">
-        
+        <img src="{{image.image.url}}" alt="image" class="card-img photo">
+        <p>{{image.title}}</p>
     </div>
     <div class="row">
-        
-    </div> -->
+        <h4 class="modal-title">{{image.title}}|{{photo.location}}</h4>
+    </div>
+    <div class="modal-body">
+        <img src="{{image.image.url}}" alt="{{image.title}}" class="img-fluid">
+        <p class="text-center">{{image.description}}</p>
+    </div>
 </div>
 
 {% endblock%}

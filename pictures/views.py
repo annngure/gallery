@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse,Http404
-from .models import Photographer, Location, Category
+from .models import Photographer, Location, Category,Image
 # Create your views here.
 
 def index(request):
-    locations = Location.objects.all()
+    image=Image.objects.all()
+    location = Location.all_locations()
     title = 'Ultimate'
-    return render(request,'index.html',{"title":title , "locations":locations})
+    return render(request,'index.html',{"title":title , "location":location,"image":image})
 
 def search_results(request):
     if 'category'in request.GET and request.GET['category']:
@@ -23,7 +24,7 @@ def search_results(request):
 
 def filter_by_location (request,location_id):
     title='Location'
-    locations =Location.object.all()
+    location =Location.all_location()
     image= Image.filter_by_location(id=location_id)
 
-    return render(request, 'location.html',{"image":image})
+    return render(request, 'location.html',{"image":image,"location":location})
