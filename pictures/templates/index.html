@@ -3,6 +3,22 @@
 {% block content%}
 {{block.super}}
 
+<div class="banner">
+    <div class="cover">
+        <div class="container image">
+            <h2 id="category">The world is an art gallery when you're mindful.</h2>
+            <h2 class="category">There are beautiful things everywhere.</h2>
+            <form class="form" role="search" action="{% url 'search_results' %}">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search by category" name="image">
+                  <br>
+                </div>
+
+              </form>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <h1 class="text-center">{{title}}</h1>
 </div>

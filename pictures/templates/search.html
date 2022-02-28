@@ -1,32 +1,51 @@
-{% extends 'base.html'%}
+{%extends 'base.html'%}
+{% load static%}
 
-{% block content%}
-{{block.super}}
+{% block content %}
 
+{{ block.super}}
 <div class="container">
     <div class="row">
-        {% if image %}
-        <h2>Found {{image|length}} of searched term {{message}}</h2>
-        {%else%}
-        <h2>Found 0 categories for the searched term {{image.category}}</h2>
-        {% endif %}
-        <form action="{%url 'search_image'%}" class="form" role="search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search by category">
-            </div>
-        </form>
+        <h2>Found {{ image|length }} of searched category {{message}}</h2>
     </div>
 </div>
-<div class="row">   
-{% for image in image%}
-<div class="col-sm-6 col-md-3">
-    <div class="portfolio-wrap">
-        <img src="{{image.image.url}}" alt="" class="card-im image">
-            <h1>{{image.name}}</h1>   
+<div class="row">
+
+    {% if image%}
+    <div class="row gallery p-3" id="gallery">
+        {%for image in image%}
+        <div class="col-sm-8 col-lg-3 mb-3"  data-toggle="modal" data-target="#{{image.id}}">
+            <img src="{{image.image.url}}" alt=" " class="card-img photo" >
+            <p id="img">{{image.title}}</p>
         </div>
-                   
+        <div class="modal fade" id="{{image.id}}"  role="dialog">
+            <div class=" modal-dialog-centered" role="document">
+                <div class="modal-content modalcard">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="imageheader">{{image.title}}  | {{image.location}}</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    <div class="modal-body">
+                            <img src="{{image.image.url}}" alt=" " class="img-fluid">
+                            <p class="text-center">{{image.description}}</p>   
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
     </div>
-{%empty%}
+    {% else %}
+    <div class="row">
+        <div class="col-md-6 pt-4">
+            <h3 class="text-dark bg-warning">No images in this category yet, check for updates later.</h3>
+        </div>
+        <div class="col-md-4">
+            <img src="{%static 'photos/found.jpeg'%}" alt="" class="error">
+        </div>
+    </div>
+    {% endif %}
 </div>
-{%endfor%}
-{% endblock%}
+
+{%endblock%}

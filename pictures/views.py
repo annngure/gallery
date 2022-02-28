@@ -5,7 +5,6 @@ from .models import Photographer, Location, Category,Image
 
 def index(request):
     category=Category.objects.all()
-    # photographer=Photographer.object.all()
     image=Image.objects.all()
     location = Location.all_locations()
     title = 'Ultimate'
@@ -13,12 +12,13 @@ def index(request):
 
 def search_results(request):
     location = Location.objects.all()
+    category=Category.objects.all()
     if 'category'in request.GET and request.GET['category']:
-        search_category=request.GET.get("category")
-        searched_category = Image.search_image(search_category)
-        message=f"{search_category}"
+        search_term=request.GET.get("category")
+        searched_category = Image.search_image(search_term)
+        message=f"{search_term}"
         
-        return render(request, 'search.html',{"message":message,"image":searched_category,"location":location})
+        return render(request, 'search.html',{"message":message,"image":searched_category,"location":location,"category":category})
 
     else:
         message = "You haven't searched for any term"

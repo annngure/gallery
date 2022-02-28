@@ -91,8 +91,8 @@ class Image(models.Model):
         cls.objects.filter(id = id).update(image=image,description=description,name=name,category=category,location=location)
     
     @classmethod
-    def search_image(cls,search_category):
-        image = cls.object.filter(category__name__icontains=search_category)   
+    def search_image(cls,category):
+        image = cls.object.filter(category__name__icontains=category)   
         return image
 
 
