@@ -1,1 +1,24 @@
-
+.row img{
+    width:100%
+}
+#img{
+    text-align:left;
+    position:absolute;
+    padding-top: 5px;
+    padding-left: 30%;
+    margin-left:-91%;
+    background-color: antiquewhite;
+}
+.row .imgdisplay{
+    position:relative;
+}
+.modal-body img{
+    height: 200px !important;
+    width: 100% !important;
+}
+.copy{
+    transition: transform .2s;
+}
+.copy:hover{
+    transform: scale(1.3);
+}
