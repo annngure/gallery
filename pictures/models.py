@@ -15,7 +15,14 @@ class Photographer(models.Model):
     
     def save_Photographer(self):
         self.save()
-    
+
+    def delete_Photographer(self):
+        self.delete()
+
+
+    @classmethod
+    def update_photographer(cls,id):
+        cls.objects.filter(id=id).update(name=name)
     
     @classmethod
     def all_photographer(cls):
@@ -34,13 +41,15 @@ class Location(models.Model):
 
     def delete_location(self):
         self.delete()
+    
 
     @classmethod
     def all_locations(cls):
         location=Location.objects.all()
         return location
-    @classmethod
-    def update_location(cls,id):
+    
+    @classmethod   
+    def update_location(cls, id, name):
         cls.objects.filter(id=id).update(name=name)
 
     def __str__(self):
@@ -56,7 +65,11 @@ class Category(models.Model):
     def delete_Category(self):
         self.delete()
 
-   
+    
+    @classmethod
+    def update_category(cls,id,name):
+        cls.objects.filter(id=id).update(name=name)
+
     @classmethod
     def all_category(cls):
         category=Category.objects.all()
@@ -92,7 +105,7 @@ class Image(models.Model):
     
     @classmethod
     def search_image(cls,category):
-        image = cls.object.filter(category__name__icontains=category)   
+        image = cls.object.filter(category__name__icontains=search_category)   
         return image
 
 

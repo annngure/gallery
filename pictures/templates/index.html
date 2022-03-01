@@ -30,18 +30,21 @@
 <div class="row">
     {%for image in image%}
     
-    <div class="card" style="width: 20rem;">
-        <div class="row">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+             <div class="row">
             <div class="col-sm">
-                <img src="{{image.image.url}}" alt="{{image.title}}" class="img-fluid">
-                <p>Name:{{image.title}}</p>
-                <p >Location:{{image.location}}</p>
-                <p >Category:{{image.category}}</p>
-                <p>Description:{{image.description}}</p>
-                <p>Posted by {{image.photographer}} on {{image.pub_date}}</p> 
+                   <img src="{{image.image.url}}" alt="{{image.title}}" class="img-fluid"> 
+                    <p>Name:{{image.title}}</p>
+                    <p >Location:{{image.location}}</p>
+                    <p >Category:{{image.category}}</p>
+                    <p>Description:{{image.description}}</p>
+                    <p>Posted by {{image.photographer}} on {{image.pub_date}}</p> 
             </div>
         
+        </div> 
         </div>
+      
     </div>
     {%endfor%}
 </div>
