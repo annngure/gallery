@@ -9,29 +9,34 @@
 
 <div class="banner">
     <div class="cover">
-        <div class="container image">
+        <div>
             <p id="category">The world is an art gallery when you're mindful.There are beautiful things everywhere.</p>
-            <form class="form" role="search" action="{% url 'search_results' %}">
-                <div class="input-group" style="width:fit-content">
-                  <input type="text" class="form-control" placeholder="Search by category" name="image" style="border-radius: 10px;border-color: aqua;">
-                  <br>
-                </div>
-
-              </form>
+            <div style="float:right">
+                <form class="form" role="search" action="{% url 'search_results' %}">
+                    <div class="input-group" style="width:fit-content">
+                      <input type="text" class="form-control" placeholder="Search by category" name="image" style="border-radius: 10px;border-color: aqua;">
+                      <button class="btn btn-sucess" style="background-color: aqua;">SEARCH.</button>
+                    </div>
+    
+                  </form>
+            </div>
+            
         </div>
     </div>
 </div>
-
+<br>
+<br>
+<br>
 <div class="row">
     {%for image in image%}
     
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
         <div class="row">
             <div class="col-sm">
+                <img src="{{image.image.url}}" alt="{{image.title}}" class="img-fluid">
                 <p>Name:{{image.title}}</p>
                 <p >Location:{{image.location}}</p>
                 <p >Category:{{image.category}}</p>
-                <img src="{{image.image.url}}" alt="{{image.title}}" class="img-fluid">
                 <p>Description:{{image.description}}</p>
                 <p>Posted by {{image.photographer}} on {{image.pub_date}}</p> 
             </div>
